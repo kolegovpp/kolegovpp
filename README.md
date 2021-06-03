@@ -4,11 +4,10 @@
 - 💞️ I’m looking to collaborate on ...
 - 📫 How to reach me ...
 
-### Tip for linux command line
+### [Tip for linux command line](linux_tips.md)
 **Burn bootable iso to usb by dd**
 
-`sudo dd if=xubuntu-*.iso of=/dev/sdh bs=1024k status=progress && sync`
-
+`sudo dd if=ubuntu.iso of=/dev/sdh bs=1024k status=progress && sync`
 
 
 <!---
