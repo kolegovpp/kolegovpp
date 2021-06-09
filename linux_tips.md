@@ -6,6 +6,24 @@
 
 `sudo dd if=ubuntu.iso of=/dev/sdh bs=1024k status=progress && sync`
 
+**Conver vector files using inkscape**
+
+For .emf files. Pay attention filenames without spaces:
+
+`for i in *.emf; do inkscape --file $i --export-plain-svg $i.svg; done`
+
+
+
+
+### GIS' tips
+
+**Transformation unref vector layer to ref one**
+
+Coordinates legend: ungeoref_x ungeoref_y georef_x georef_y elevation:
+
+`ogr2ogr -progress -f "GPKG" -a_srs EPSG:4326 -tps -gcp 4.407 -4,487 155 61.333333333 -gcp 8.22951 -678.36087 155 60.666666667 -gcp 497.170404 -3.639216 156 61.333333333 -gcp 506.459434 -676.671875 156 60.66666667 Tectonic_schema.gpkg Tectonic_schema_noref.gpkg`
+
+
 **RAID in my PC**
 
 Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
@@ -41,12 +59,3 @@ Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
 `mdadm --assemble --scan` - поиск необходимой конфигурации и восстановление RAID.
 
 Указываем диски для пересборки - `mdadm --assemble /dev/md0 /dev/sdb /dev/sdc`.
-
-
-### GIS' tips
-
-**Transformation unref vector layer to ref one**
-
-Coordinates legend: ungeoref_x ungeoref_y georef_x georef_y elevation:
-
-`ogr2ogr -progress -f "GPKG" -a_srs EPSG:4326 -tps -gcp 4.407 -4,487 155 61.333333333 -gcp 8.22951 -678.36087 155 60.666666667 -gcp 497.170404 -3.639216 156 61.333333333 -gcp 506.459434 -676.671875 156 60.66666667 Tectonic_schema.gpkg Tectonic_schema_noref.gpkg`
