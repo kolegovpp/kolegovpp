@@ -12,7 +12,9 @@ For .emf files. Pay attention filenames without spaces:
 
 `for i in *.emf; do inkscape --file $i --export-plain-svg $i.svg; done`
 
+**Conver RGB to CMYK color space in PDF file**
 
+`gs -dSAFER -dBATCH -dNOPAUSE -dNOCACHE -sDEVICE=pdfwrite -sColorConversionStrategy=CMYK -dProcessColorModel=/DeviceCMYK -sOutputFile=output_CMYK.pdf Input.pdf`
 
 
 ### GIS' tips
