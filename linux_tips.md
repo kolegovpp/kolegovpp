@@ -61,3 +61,7 @@ Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
 `mdadm --assemble --scan` - поиск необходимой конфигурации и восстановление RAID.
 
 Указываем диски для пересборки - `mdadm --assemble /dev/md0 /dev/sdb /dev/sdc`.
+
+**a multi-threading download**
+
+`axel -a -n [Num_of_Thread] link1 link2 link3 ...`
