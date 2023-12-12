@@ -26,6 +26,30 @@ Coordinates legend: ungeoref_x ungeoref_y georef_x georef_y elevation:
 `ogr2ogr -progress -f "GPKG" -a_srs EPSG:4326 -tps -gcp 4.407 -4,487 155 61.333333333 -gcp 8.22951 -678.36087 155 60.666666667 -gcp 497.170404 -3.639216 156 61.333333333 -gcp 506.459434 -676.671875 156 60.66666667 Tectonic_schema.gpkg Tectonic_schema_noref.gpkg`
 
 
+**PDF: split one long page to two separete pages**
+
+Get from https://unix.stackexchange.com/questions/405610/how-can-i-split-each-pdf-page-into-two-pages-using-the-command-line
+
+```bash
+pdftk input.pdf burst
+
+pw=`cat doc_data.txt  | grep PageMediaDimensions | head -1 | awk '{print $2}'`
+ph=`cat doc_data.txt  | grep PageMediaDimensions | head -1 | awk '{print $3}'`
+w2=$(( pw / 2 ))
+w2px=$(( w2*10 ))
+hpx=$((  ph*10 ))
+for f in  pg_[0-9]*.pdf ; do
+  lf=left_$f
+  rf=right_$f
+  gs -o ${lf} -sDEVICE=pdfwrite -g${w2px}x${hpx} -c "<</PageOffset [0 0]>> setpagedevice" -f ${f}
+  gs -o ${rf} -sDEVICE=pdfwrite -g${w2px}x${hpx} -c "<</PageOffset [-${w2} 0]>> setpagedevice" -f ${f}
+done
+
+ls -1 [lr]*_[0-9]*pdf | sort -n -k3 -t_ > fl
+pdftk `cat fl`  cat output output.pdf 
+```
+
+
 **RAID in my PC**
 
 Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
