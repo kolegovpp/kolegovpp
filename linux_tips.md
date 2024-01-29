@@ -25,6 +25,13 @@ Coordinates legend: ungeoref_x ungeoref_y georef_x georef_y elevation:
 
 `ogr2ogr -progress -f "GPKG" -a_srs EPSG:4326 -tps -gcp 4.407 -4,487 155 61.333333333 -gcp 8.22951 -678.36087 155 60.666666667 -gcp 497.170404 -3.639216 156 61.333333333 -gcp 506.459434 -676.671875 156 60.66666667 Tectonic_schema.gpkg Tectonic_schema_noref.gpkg`
 
+**Color Table Gallery**
+
+Many items of one with examples. Site is look like this. 
+
+Link is https://www.ncl.ucar.edu/Document/Graphics/ColorTables/GMT_globe.shtml
+
+![](Color_tabels_exmpl.png)
 
 **PDF: split one long page to two separete pages**
 
