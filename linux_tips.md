@@ -56,6 +56,13 @@ ls -1 [lr]*_[0-9]*pdf | sort -n -k3 -t_ > fl
 pdftk `cat fl`  cat output output.pdf 
 ```
 
+**PDF: merge few jpg's to one pdf**
+
+```bash
+for i in *.JPG ; do convert "$i" -resize 26% -quality 75 "${i%.*}.pdf" ; done     
+ls *.pdf > pdfs.txt
+pdftk $(cat pdfs.txt) output final.pdf && rm $(cat pdfs.txt)
+```
 
 **RAID in my PC**
 
