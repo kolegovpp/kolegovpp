@@ -64,6 +64,37 @@ ls *.pdf > pdfs.txt
 pdftk $(cat pdfs.txt) output final.pdf && rm $(cat pdfs.txt)
 ```
 
+**PDF:  Optical Character Recognition (распознание текста)**
+
+There is the  Tesseract command line programm. `sudo apt install tesseract-ocr-all` (for all languages).
+
+Tesseract is used only `tiff`, `jpg`, `png` files! Before convert to the one single page file for OCR.
+
+Scripts for that (for russian text file)
+
+```bash
+#!/bin/bash
+
+tif_dir=tif
+out_dir=out
+
+first=000 
+last=`ls $tif_dir | grep -o '[0-9]\{3\}' | sort -n | tail -1`
+
+export LANG=ru_RU.UTF-8
+
+for i in $(seq -w $first $last); do
+  filename=nameOfSingleFile-$i.jpg
+  echo "Processing $filename"
+  
+   tesseract -l rus "$tif_dir/$filename" "$out_dir/${filename%.jpg}.txt"
+  
+  echo "OCR complete for $filename"
+done
+```
+
+
+
 **RAID in my PC**
 
 Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
