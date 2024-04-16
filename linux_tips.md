@@ -93,6 +93,29 @@ for i in $(seq -w $first $last); do
 done
 ```
 
+Next - merge all txt in one file.
+
+```bash
+#!/bin/bash
+
+input_dir=out
+output_file=all.txt
+
+first=000
+last=171
+
+echo "Merging files..."
+
+touch $output_file
+
+for i in $(seq -w $first $last); do
+  filename=landscape-$i.txt.txt
+  cat $input_dir/$filename >> $output_file
+done
+
+echo "Files merged to $output_file"
+```
+
 
 
 **RAID in my PC**
