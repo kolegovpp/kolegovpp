@@ -157,3 +157,22 @@ Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
 **a multi-threading download**
 
 `axel -a -n [Num_of_Thread] link1 link2 link3 ...`
+
+
+
+**Apache2 configuration of symbolic links**
+
+In .conf file `/etc/apache2/sites-available/`
+```
+Alias /aliasName /pathToFolder
+	<Directory /pathToFolder>
+		Options +Indexes +FollowSymLinks -SymLinksIfOwnerMatch
+		AllowOverride None
+		Require all granted
+	</Directory>
+```
+Then will check `+x` permision for all path folders.
+
+Use `namei -l symbolicLinks` to do one, and `chmod 771` for path folders.
+
+Source https://superuser.com/questions/810111/why-isnt-apache-following-my-symbolic-links
