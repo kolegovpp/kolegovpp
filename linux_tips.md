@@ -6,6 +6,8 @@
 
 `sudo dd if=ubuntu.iso of=/dev/sdh bs=1024k status=progress && sync`
 
+Check sum (need sum file) of iso: `sha256sum --check SHA256SUMS`       
+
 **Conver vector files using inkscape**
 
 For .emf files. Pay attention filenames without spaces:
@@ -118,7 +120,7 @@ echo "Files merged to $output_file"
 
 
 
-**RAID in my PC**
+### **RAID in my PC**
 
 Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
 
@@ -160,7 +162,7 @@ Get from https://www.dmosk.ru/miniinstruktions.php?mini=mdadm
 
 
 
-**Apache2 configuration of symbolic links**
+### **Apache2 configuration of symbolic links**
 
 In .conf file `/etc/apache2/sites-available/`
 ```
