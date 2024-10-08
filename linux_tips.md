@@ -6,7 +6,14 @@
 
 `sudo dd if=ubuntu.iso of=/dev/sdh bs=1024k status=progress && sync`
 
-Check sum (need sum file) of iso: `sha256sum --check SHA256SUMS`       
+Check sum (need sum file) of iso: `sha256sum --check SHA256SUMS`
+
+Check USB stick 
+
+```bash
+sudo cmp -n `stat -c '%s' ubuntu.iso` ubuntu.iso /dev/sdh
+```
+
 
 **Conver vector files using inkscape**
 
